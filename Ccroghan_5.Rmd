@@ -1,0 +1,73 @@
+---
+title: "Ccroghan_5"
+author: "Cameron Croghan"
+date: "9/29/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Question 1
+
+/*Decision variable*/
+Xji=1 if optimal, Xji=0 if not
+
+/*Objective function*/
+Max: 5X12 + 3X13 + 3X35 + 2X25 + 4X24 + 4X47 + X46 + 2X58 + 6X57 + 6X57 + 5X69 + 4X79 + 7X89;
+
+/*Constraints*/
+X12 + X13 = 1;
+X12 = X25 + X24;
+X13 = X35;
+X24 = X46 + X47;
+X25 + X35 = X57 + X58;
+X46 + X69;
+X57 + X47 = X79;
+X58 = X89;
+X69 + X79 + X89 = 1;
+
+library(lpsolve)
+x<-read.lp()
+solve(x)
+get.variables(x)
+get.constraints(x)
+
+Question 2
+(a)
+Expected return per stock
+S1= 2(1+.05)/40+.05=10.25
+S2= 13.3
+S3= 7.5
+H1= 9.2
+H2= 11.8
+H3= 16.9
+C1= 29.3
+C2= 0
+Average=12.3
+
+Dollars per stock / price = # shares (optimal)
+S1= 100000 / 40 = 2500
+S2= 300000 / 50 = 6000
+S3= 100000 / 80 = 1250
+H1= 100000 / 60 = 1666
+H2= 100000 / 45 = 2222
+H3= 800000 / 60 = 13333
+C1= 900000 / 30 = 30000
+C2= 100000 / 25 = 4000
+
+Multiple of 1000 shares * price = $ invested
+S1= 3000*40=120000 (20% increase)
+S2= 5000*50=250000 (16.7% decrease)
+S3= 2000*80=160000 (60% increase)
+H1= 2000*60=120000 (20% increase)
+H2= 3000*45=135000 (35% increase)
+H3= 13000*60=780000 (2.5% decrease)
+C1= 29000*30=870000 (3.3% decrease)
+C2= 4000*25=100000 (0% change)
+
+Maximum Return
+10.25(.1/2.5) + 13.3(.3/2.5) + 7.5(.1/2.5) + 9.2(.1/2.5) + 11.8(.1/2.5) + 16.9(.8/2.5) + 29.3(.9/2.5) + 0(.1/2.5)= 19.1% ROI
+
+Maximum Return (Multiple 1000 shares)
+10.25(.12/2.5) + 13.3(.25/2.5) + 7.5(.16/2.5) + 9.2(.12/2.5) + 11.8(.135/2.5) + 16.9(.78/2.5) + 29.3(.87/2.5) + 0(.1/2.5)=18.8ROI (.3% decrease)
